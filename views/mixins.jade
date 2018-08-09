@@ -4,12 +4,24 @@ mixin renderProducts(products)
     for product in products
       +renderProduct(product)
 
+mixin renderPosts(posts)
+ h1 Posts
+ .posts
+    for post in posts
+      +renderPost(post)
+
 mixin renderProduct(product)
     .product-in-list
       .product-image
         +renderImage(product.fields.image[0], product.fields.slug, 150)
       .product-details
         +renderProductDetails(product.fields)
+
+        
+mixin renderPost(post)
+    .post-in-list
+      .post-details
+        +renderPostDetails(post.fields)
 
 
 mixin renderImage(image, slug, w)
@@ -34,6 +46,10 @@ mixin renderProductDetails(fields)
   p #{fields.productDescription}
   p #{fields.price} &euro;
   +renderTags(fields.tags)
+
+
+mixin renderPostDetails(fields)
+  p.product-categories #{fields.map(function(category){ return category }).join(', ')}
 
 mixin renderProductHeader(fields)
   .product-header

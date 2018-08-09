@@ -13,13 +13,15 @@
   },
   "proxy": "http://localhost:3000",
   "config": {
-    "accessToken": "0e3ec801b5af550c8a1257e8623b1c77ac9b3d8fcfc1b2b7494e3cb77878f92a",
-    "space": "wl1z0pal05vy"
+    "accessToken": "d83c4f985f4e4a1b1e17b688822cac70309f7c451dccba0ede9eab7319438a95",
+    "space": "drc95kaaxlp9"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
     "compression": "^1.6.2",
+    "contentful": "^6.1.2",
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
     "cross-env": "^5.0.1",
     "debug": "~2.2.0",
     "express": "~4.13.4",
@@ -27,11 +29,10 @@
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
     "nodemon": "^1.11.0",
-    "serve-favicon": "~2.3.0",
-    "contentful": "^6.1.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-markdown": "^3.4.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "serve-favicon": "~2.3.0"
   }
 }
