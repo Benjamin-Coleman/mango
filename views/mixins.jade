@@ -21,7 +21,7 @@ mixin renderProduct(product)
 mixin renderPost(post)
     .post-in-list
       .post-details
-        +renderPostDetails(post.fields)
+      +renderPostDetails(post.fields)
 
 
 mixin renderImage(image, slug, w)
@@ -49,7 +49,8 @@ mixin renderProductDetails(fields)
 
 
 mixin renderPostDetails(fields)
-  p.product-categories #{fields.map(function(category){ return category }).join(', ')}
+  - console.log(fields)
+  p.product-categories #{Object.keys(fields).map(function(category){ return category }).join(', ')}
 
 mixin renderProductHeader(fields)
   .product-header

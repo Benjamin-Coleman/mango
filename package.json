@@ -17,6 +17,7 @@
     "space": "drc95kaaxlp9"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "~1.15.1",
     "compression": "^1.6.2",
     "contentful": "^6.1.2",
