@@ -1,19 +1,19 @@
 var express = require('express')
 var router = express.Router()
-var products = require('../services/products')
+var posts = require('../services/posts')
 
 /* GET home page. */
 router.use(function (req, res, next) {
-  products.getProducts().then(function (productCollection) {
-    req.products = productCollection
+  posts.getPosts().then(function (postCollection) {
+    req.posts = postCollection
     next()
   })
 })
 
 router.get('/', function (req, res, next) {
-  res.render('products', {
-    'title': 'Products',
-    'products': req.products
+  res.render('posts', {
+    'title': 'Posts',
+    'posts': req.posts
   })
 })
 
