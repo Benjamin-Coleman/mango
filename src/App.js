@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header/Header'
 
 class App extends Component {
 
@@ -35,6 +36,7 @@ class App extends Component {
     })
     return (
       <div className="App">
+        <Header />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
