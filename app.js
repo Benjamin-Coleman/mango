@@ -6,10 +6,16 @@ var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var compression = require('compression')
 var helmet = require('helmet')
+const { ApolloServer, gql } = require('apollo-server-express');
+const { GraphQLServer } = require('graphql-yoga')
+const { Prisma } = require('prisma-binding')
+var query = require('./resolvers/Query/query')
+var mutation = require('./resolvers/Mutation/mutation')
 var products = require('./routes/products')
 var categories = require('./routes/categories')
 var brands = require('./routes/brands')
 var posts = require('./routes/posts')
+var graphql = require('./routes/graphql')
 
 var app = express()
 
@@ -31,6 +37,7 @@ app.use('/', posts)
 // app.use('/categories', categories)
 // app.use('/brand', brands)
 app.use('/posts', posts)
+// app.use('/graphql', graphql)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -39,9 +46,42 @@ app.use(function (req, res, next) {
   next(err)
 })
 
-// app.get("*", (req, res) => {
-//   res.sendFile(__direname + 'build/index.html')
-// })
+// Construct a schema, using GraphQL schema language
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`;
+
+// Provide resolver functions for your schema fields
+const resolvers = {
+  Query: query,
+  Mutation: mutation
+};
+
+// const server = new ApolloServer({ typeDefs, resolvers });
+const server = new GraphQLServer({
+  typeDefs: './schema.graphql',
+  resolvers,
+  context: req => ({
+    ...req,
+    prisma: new Prisma({
+      typeDefs: './generated/prisma.graphql',
+      endpoint: 'http://localhost:4466',
+    }),
+  }),
+})
+server.start(() => console.log(`🚀 GraphQL server is running on http://localhost:4000`))
+
+// server.applyMiddleware({ app });
+
+// app.listen({ port: 4000 }, () =>
+//   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`),
+// );
+
+app.get("*", (req, res) => {
+  res.sendFile(__direname + 'build/index.html')
+})
 
 // error handlers
 
