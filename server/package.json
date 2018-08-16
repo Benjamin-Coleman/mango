@@ -1,0 +1,28 @@
+{
+  "name": "mango",
+  "version": "0.0.0",
+  "main": "app.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon ./src/bin/www"
+  },
+  "proxy": "http://localhost:3000",
+  "config": {
+    "accessToken": "d83c4f985f4e4a1b1e17b688822cac70309f7c451dccba0ede9eab7319438a95",
+    "space": "drc95kaaxlp9"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "contentful": "^7.0.0",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "cross-env": "^5.2.0",
+    "debug": "^3.1.0",
+    "express": "^4.16.3",
+    "graphql": "^0.13.2",
+    "graphql-yoga": "^1.16.1",
+    "helmet": "^3.13.0",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.18.3",
+    "prisma-binding": "^2.1.4"
+  }
+}

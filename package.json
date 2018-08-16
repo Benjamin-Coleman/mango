@@ -5,9 +5,9 @@
   "scripts": {
     "start": "npm run production",
     "heroku-prebuild": "npm install",
-    "dev": "cross-env NODE_ENV=development nodemon ./bin/www",
-    "production": "cross-env NODE_ENV=production node ./bin/www",
-    "node-start": "nodemon ./bin/www",
+    "dev": "cross-env NODE_ENV=development nodemon ./server/src/bin/www",
+    "production": "cross-env NODE_ENV=production node ./server/src/bin/www",
+    "node-start": "nodemon ./server/src/bin/www",
     "react-start": "react-scripts start",
     "build": "react-scripts build"
   },
@@ -48,6 +48,8 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.0"
+    "eslint-plugin-react": "^7.11.0",
+    "jwt-decode": "2.2.0",
+    "prettier-eslint-cli": "4.7.1"
   }
 }

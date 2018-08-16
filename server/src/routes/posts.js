@@ -1,5 +1,6 @@
 var express = require('express')
 var router = express.Router()
+console.log('after post requires')
 var posts = require('../services/posts')
 
 /* router params */
