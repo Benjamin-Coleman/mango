@@ -11,18 +11,23 @@
     "space": "drc95kaaxlp9"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "contentful": "^7.0.0",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "cross-env": "^5.2.0",
     "debug": "^3.1.0",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "graphql": "^0.13.2",
     "graphql-yoga": "^1.16.1",
     "helmet": "^3.13.0",
+    "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.0",
     "nodemon": "^1.18.3",
     "prisma-binding": "^2.1.4"
+  },
+  "devDependencies": {
+    "prisma": "^1.14.0"
   }
 }
