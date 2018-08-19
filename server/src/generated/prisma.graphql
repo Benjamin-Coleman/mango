@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Wed Aug 15 2018 15:28:24 GMT-0400 (Eastern Daylight Time)
+# timestamp: Fri Aug 17 2018 12:57:38 GMT-0400 (Eastern Daylight Time)
 
 type AggregateUser {
   count: Int!
@@ -294,4 +294,5 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  username: String
 }
