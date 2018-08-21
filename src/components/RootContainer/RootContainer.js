@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
+import Post from "../Post/Post";
+import PostPreview from "../PostPreview/PostPreview";
 import { AUTH_TOKEN } from "../../constant";
 import { isTokenExpired } from "../../helper/jwtHelper";
 import { graphql } from "react-apollo";
@@ -19,6 +21,14 @@ const ProtectedRoute = ({ component: Component, token, ...rest }) => {
     <Route {...rest} render={matchProps => <Component {...matchProps} />} />
   ) : (
     <Redirect to="/login" />
+  );
+};
+
+const ProtectedPost = ({ component: Component, token, ...rest }) => {
+  return token ? (
+    <Route {...rest} render={matchProps => <Component {...matchProps} />} />
+  ) : (
+    <Route {...rest} render={matchProps => <PostPreview {...matchProps} />} />
   );
 };
 
@@ -153,13 +163,18 @@ class RootContainer extends Component {
             token={this.state.token}
             path="/drafts"
             component={DraftsPage}
-          />
-          <ProtectedRoute
+          /> */}
+          {/* <ProtectedRoute
             token={this.state.token}
             path="/create"
             component={CreatePage}
+          /> */}
+          {/* <Route path="/post/:id" component={DetailPage} /> */}
+          <ProtectedPost
+            token={this.state.token}
+            path="/post"
+            component={Post}
           />
-          <Route path="/post/:id" component={DetailPage} /> */}
           <Route
             token={this.state.token}
             path="/login"
