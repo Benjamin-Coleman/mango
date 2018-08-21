@@ -1,8 +1,7 @@
 mutation {
-  createUser(data: {
-    username: "developer@example.com"
-    password: "password123" #plaintext for now
-  }) {
+  createUser(
+    data: { username: "developer@example.com", password: "password123" }
+  ) {
     id
   }
 }
