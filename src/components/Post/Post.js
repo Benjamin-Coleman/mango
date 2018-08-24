@@ -5,16 +5,20 @@ import "./Post.css";
 
 class Post extends Component {
   state = {
-    posts: []
+    post: {
+      sys: {},
+      fields: {}
+    }
   };
 
   componentDidMount() {
     axios
-      .get(`http://localhost:3000/posts`)
+      .get(`http://localhost:3000/post/${this.props.match.params.title}`)
       .then(entries => {
+        console.log(entries);
         this.setState(() => {
           return {
-            posts: entries.data.posts
+            post: entries.data.post
           };
         });
       })
@@ -22,19 +26,13 @@ class Post extends Component {
   }
 
   render() {
-    console.log("Post.js: ");
-    let allPosts = this.state.posts.map((post, index) => {
-      return (
-        <div className="post" key={index}>
-          <Link to={"/post/" + post.fields.path}>
-            <h1>{post.fields.title}</h1>
-            <p>{post.fields.content}</p>
-          </Link>
-        </div>
-      );
-    });
-
-    return <div className="posts-wrapper">{allPosts}</div>;
+    console.log("Post.js: ", this.state);
+    return (
+      <div className="post-wrapper">
+        <h1>{this.state.post.fields.title}</h1>
+        <p>{this.state.post.fields.content}</p>
+      </div>
+    );
   }
 }
 

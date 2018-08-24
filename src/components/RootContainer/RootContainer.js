@@ -7,10 +7,12 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
+import Home from "../Home/Home";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
 import Post from "../Post/Post";
 import PostPreview from "../PostPreview/PostPreview";
+import NotFound from "../NotFound/NotFound";
 import { AUTH_TOKEN } from "../../constant";
 import { isTokenExpired } from "../../helper/jwtHelper";
 import { graphql } from "react-apollo";
@@ -26,9 +28,15 @@ const ProtectedRoute = ({ component: Component, token, ...rest }) => {
 
 const ProtectedPost = ({ component: Component, token, ...rest }) => {
   return token ? (
-    <Route {...rest} render={matchProps => <Component {...matchProps} />} />
+    <Switch>
+      <Route {...rest} render={matchProps => <Component {...matchProps} />} />
+      <Route component={NotFound} />
+    </Switch>
   ) : (
-    <Route {...rest} render={matchProps => <PostPreview {...matchProps} />} />
+    <Switch>
+      <Route {...rest} render={matchProps => <PostPreview {...matchProps} />} />
+      <Route component={NotFound} />
+    </Switch>
   );
 };
 
@@ -158,7 +166,7 @@ class RootContainer extends Component {
     return (
       <div className="fl w-100 pl4 pr4">
         <Switch>
-          {/* <Route exact path="/" component={FeedPage} /> */}
+          <Route exact path="/" component={Home} />
           {/* <ProtectedRoute
             token={this.state.token}
             path="/drafts"
@@ -172,7 +180,7 @@ class RootContainer extends Component {
           {/* <Route path="/post/:id" component={DetailPage} /> */}
           <ProtectedPost
             token={this.state.token}
-            path="/post"
+            path="/post/:title"
             component={Post}
           />
           <Route
@@ -185,6 +193,7 @@ class RootContainer extends Component {
             path="/signup"
             render={props => <Signup refreshTokenFn={this.refreshTokenFn} />}
           />
+          <Route component={NotFound} />
         </Switch>
       </div>
     );
