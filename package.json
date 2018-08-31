@@ -24,6 +24,7 @@
     "apollo-utilities": "^1.0.18",
     "axios": "^0.18.0",
     "body-parser": "~1.15.1",
+    "classnames": "^2.2.6",
     "compression": "^1.6.2",
     "contentful": "^6.1.2",
     "cookie-parser": "~1.4.3",
