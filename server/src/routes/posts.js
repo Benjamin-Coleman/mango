@@ -23,6 +23,12 @@ router.use(function(req, res, next) {
   });
 });
 
+router.get("/featuredPost", function(req, res, next) {
+  console.log("Featured post req res: ", req.posts);
+
+  res.json({ post: req.post });
+});
+
 router.get("/post/:slug", function(req, res, next) {
   console.log("logging request", req);
   // res.render("post", {

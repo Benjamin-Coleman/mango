@@ -92,7 +92,6 @@ class Header extends Component {
 
     return (
       <div ref="navbarWrapper" className="nav-wrapper">
-        <div className="nav-shim" />
         <header className={navStyles}>
           <div className="nav-item">
             <a href="/popular">

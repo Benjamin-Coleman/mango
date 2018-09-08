@@ -9,6 +9,10 @@
 
 ## quick start
 
+- Setup DB
+- Start Docker
+  `docker-compose up -d`
+
 - Install frontend
   `npm install`
 - Install server
@@ -23,6 +27,7 @@
 
 ### Ports
 
+Postgres - 5432
 GraphQL - 4000
 Prisma - 4466
 Express - 3000

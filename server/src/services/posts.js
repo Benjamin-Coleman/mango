@@ -15,6 +15,12 @@ function getPosts(query) {
   return client.getEntries(query);
 }
 
+function getFeaturedPost() {
+  query = query || {};
+  query["content_type"] = "title";
+  return client.getEntry(query).catch(error => console.error(error));
+}
+
 function getPostsInCategory(id) {
   return getPosts({ "fields.categories.sys.id[in]": id });
 }
