@@ -28,6 +28,6 @@
     "prisma-binding": "^2.1.4"
   },
   "devDependencies": {
-    "prisma": "^1.14.0"
+    "prisma": "^1.15.3"
   }
 }

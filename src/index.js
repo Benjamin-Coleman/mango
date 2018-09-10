@@ -2,8 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import AppWrapper from "./AppWrapper";
 import RootContainer from "./components/RootContainer/RootContainer";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Provider } from 'react-redux';
+import configureStore from "./store";
 import { ApolloProvider } from "react-apollo";
 import { HttpLink, InMemoryCache, ApolloClient } from "apollo-client-preset";
 import { WebSocketLink } from "apollo-link-ws";
@@ -58,12 +61,19 @@ const client = new ApolloClient({
 
 const token = localStorage.getItem(AUTH_TOKEN);
 
+const store = configureStore(window.__INITIAL_STATE__);
+
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <RootContainer token={token} />
+    <Provider store={store}>
+      {/* <RootContainer token={token} /> */}
     {/* <Router>
       <Route path="/" component={App} />
     </Router> */}
+      <Router>
+        <AppWrapper helmetContext={{}} />
+      </Router>
+    </Provider>
   </ApolloProvider>,
   document.getElementById("root")
 );
