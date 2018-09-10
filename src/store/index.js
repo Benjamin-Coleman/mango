@@ -1,17 +1,18 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import ReduxThunk from 'redux-thunk'
 
 // Reducers:
-
+import { appReducer } from './appReducer'
 
 export default function configureStore(initialState = {}) {
-    const rootReducer = combineReducers({
-    });
+  const rootReducer = combineReducers({
+    appReducer
+  })
 
-    const store = createStore(
-        rootReducer,
-        initialState
-    );
+  const enhancers = [applyMiddleware(ReduxThunk)]
 
-    return store;
-};
+  const store = createStore(rootReducer, initialState)
+
+  return store
+}
