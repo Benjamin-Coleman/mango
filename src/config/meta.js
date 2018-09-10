@@ -21,4 +21,4 @@ export const meta = {
 // Extend each edition with defaults
 Object.keys(meta).forEach(key => meta[key] = Object.assign({}, meta.inkmango, meta[key]));
 
-export default meta.inkmango;
+export default () => meta.inkmango;
